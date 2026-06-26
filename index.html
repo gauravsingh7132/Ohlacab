@@ -66,6 +66,16 @@
   }
   .sticky-bar a.call { background: var(--rust); }
   .sticky-bar a.whatsapp { background: var(--leaf); }
+  .sticky-bar a.email-corp {
+    background: var(--taxi-yellow);
+    color: var(--taxi-black);
+    font-weight: 800;
+    display: none;
+  }
+  @media (min-width: 600px) {
+    .sticky-bar { display: flex; }
+    .sticky-bar a.email-corp { display: flex; }
+  }
 
   /* ===== NAV ===== */
   .nav {
@@ -214,6 +224,50 @@
     transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
   }
   .hero-cta-btn:hover { background: var(--taxi-yellow-deep); transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255,199,44,0.4); }
+
+  .hero-contact-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  .hero-gmail-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #EA4335;
+    color: var(--white);
+    padding: 11px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    box-shadow: 0 4px 14px rgba(234,67,53,0.35);
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+  }
+  .hero-gmail-btn:hover { background: #c5372b; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(234,67,53,0.45); }
+  .hero-gmail-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+  .hero-wa-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: var(--white);
+    padding: 11px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    white-space: nowrap;
+  }
+  .hero-wa-btn:hover { background: #1da851; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.45); }
+  .hero-wa-btn svg { width: 15px; height: 15px; flex-shrink: 0; }
   .hero-cta-secondary {
     color: rgba(242,237,228,0.75);
     font-size: 13.5px;
@@ -1074,6 +1128,68 @@
   .footer strong { color: var(--taxi-yellow); }
 
   /* ===== TOAST ===== */
+  /* ===== CORPORATE EMAIL BUTTON ===== */
+  .corporate-strip {
+    background: var(--taxi-black);
+    border: 1.5px solid rgba(255,199,44,0.25);
+    border-radius: 16px;
+    padding: 20px 22px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .corporate-strip .corp-left {
+    flex: 1;
+    min-width: 180px;
+  }
+  .corporate-strip .corp-tag {
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--taxi-yellow);
+    margin-bottom: 4px;
+  }
+  .corporate-strip .corp-title {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+  .corporate-strip .corp-sub {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.4;
+  }
+  .corp-email-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: var(--taxi-yellow);
+    color: var(--taxi-black);
+    padding: 11px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 4px 16px rgba(255,199,44,0.3);
+    font-family: 'Manrope', sans-serif;
+  }
+  .corp-email-btn:hover {
+    background: var(--taxi-yellow-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(255,199,44,0.45);
+  }
+  .corp-email-btn svg {
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+  }
+
   .toast {
     position: fixed;
     bottom: 80px;
@@ -1309,14 +1425,15 @@
 
 <!-- STICKY MOBILE BAR -->
 <div class="sticky-bar">
-  <a href="tel:+918433002020" class="call">📞 Call Now</a>
-  <a href="https://wa.me/918433002020?text=Hi%20OHLA%20CAB%2C%20I%20want%20to%20book%20a%20taxi" class="whatsapp" target="_blank">💬 WhatsApp</a>
+  <a href="tel:+918433002020" class="call" onclick="trackCallClick()">📞 Call Now</a>
+  <a href="https://wa.me/918433002020?text=Hi%20OHLA%20CAB%2C%20I%20want%20to%20book%20a%20taxi" class="whatsapp" target="_blank" onclick="trackWhatsappClick()">💬 WhatsApp</a>
+  <a href="mailto:ohlacabs@gmail.com?subject=Corporate%20Cab%20Enquiry%20%E2%80%94%20OHLA%20CAB" class="email-corp" onclick="trackEmailClick()">🏢 Corporate</a>
 </div>
 
 <!-- NAV -->
 <div class="nav">
   <div class="nav-logo">OHLA<span>CAB</span></div>
-  <a href="tel:+918433002020" class="nav-call">📞 <span class="txt">8433002020</span></a>
+  <a href="tel:+918433002020" class="nav-call" onclick="trackCallClick()">📞 <span class="txt">8433002020</span></a>
 </div>
 
 <!-- LIVE STATUS BAR -->
@@ -1338,7 +1455,18 @@
       <a href="#booking-form" class="hero-cta-btn" onclick="document.getElementById('booking-form').scrollIntoView({behavior:'smooth',block:'center'}); document.getElementById('name').focus(); return false;">
         Get a Free Quote →
       </a>
-      <a href="tel:+918433002020" class="hero-cta-secondary">📞 Call now — 8433002020</a>
+      <a href="tel:+918433002020" class="hero-cta-secondary" onclick="trackCallClick()">📞 Call now — 8433002020</a>
+    </div>
+
+    <div class="hero-contact-row">
+      <a href="mailto:ohlacabs@gmail.com?subject=Cab%20Booking%20Enquiry%20%E2%80%94%20OHLA%20CAB&body=Hello%20OHLA%20CAB%2C%0A%0AI%20would%20like%20to%20enquire%20about%20a%20cab%20booking.%0A%0AName%3A%20%0APhone%3A%20%0APickup%3A%20%0ADestination%3A%20%0ADate%3A%20%0APassengers%3A%20%0A%0APlease%20share%20availability%20and%20fare." class="hero-gmail-btn" onclick="trackEmailClick()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        Email Us
+      </a>
+      <a href="https://wa.me/918433002020?text=Hi%20OHLA%20CAB%2C%20I%20want%20to%20book%20a%20taxi" target="_blank" class="hero-wa-btn" onclick="trackWhatsappClick()">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.07-1.33C8.55 21.5 10.25 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.5 0-2.95-.4-4.2-1.15l-.3-.18-3.13.82.84-3.05-.2-.32A7.94 7.94 0 014 12c0-4.41 3.59-8 8-8s8 3.59 8 8-3.59 8-8 8zm4.4-5.6c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.19-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.12-.12.27-.31.4-.47.13-.16.18-.27.27-.45.09-.18.04-.34-.04-.47-.08-.13-.51-1.23-.7-1.69-.18-.43-.37-.37-.51-.38-.13-.01-.28-.01-.43-.01-.15 0-.39.06-.6.3-.21.24-.8.78-.8 1.9 0 1.12.82 2.2 .93 2.35.12.16 1.62 2.48 3.93 3.38 1.95.77 2.35.62 2.78.58.43-.04 1.39-.57 1.58-1.12.2-.55.2-1.02.14-1.12-.06-.1-.22-.16-.46-.28z"/></svg>
+        WhatsApp Now
+      </a>
     </div>
 
     <div class="hero-trust-row">
@@ -1757,6 +1885,19 @@
         <p class="form-foot-note">By submitting, your trip details open in WhatsApp — review and hit send to confirm your enquiry with us.</p>
       </form>
 
+      <!-- CORPORATE EMAIL STRIP -->
+      <div class="corporate-strip">
+        <div class="corp-left">
+          <div class="corp-tag">🏢 Corporate &amp; Office Bookings</div>
+          <div class="corp-title">Need regular cabs for your team?</div>
+          <div class="corp-sub">Monthly billing · Priority dispatch · Dedicated account manager</div>
+        </div>
+        <a href="mailto:ohlacabs@gmail.com?subject=Corporate%20Cab%20Enquiry%20%E2%80%94%20OHLA%20CAB&body=Hello%20OHLA%20CAB%20Team%2C%0A%0AWe%20are%20interested%20in%20corporate%2Foffice%20cab%20services.%0A%0ACompany%20Name%3A%20%0AContact%20Person%3A%20%0APhone%20Number%3A%20%0ANo.%20of%20Employees%2FTrips%3A%20%0ARoutes%20Required%3A%20%0A%0APlease%20share%20your%20corporate%20package%20details.%0A%0AThank%20you" class="corp-email-btn" onclick="trackEmailClick()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email for Corporate Rate
+        </a>
+      </div>
+
       <div class="form-divider">or reach us directly</div>
 
       <div class="call-row">
@@ -1869,6 +2010,21 @@
 
   function trackWhatsappClick() {
     fireConversion();
+  }
+
+  function trackEmailClick() {
+    // Fire Google Ads conversion for corporate email click
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-16683760213/hOmiCM2ozM0ZENX0t5M-',
+        'event_callback': function() {}
+      });
+      // Also fire a custom GA4 event to distinguish email leads from WhatsApp leads
+      gtag('event', 'corporate_email_click', {
+        'event_category': 'lead',
+        'event_label': 'corporate_email_button'
+      });
+    }
   }
 
   function trackCallClick() {
